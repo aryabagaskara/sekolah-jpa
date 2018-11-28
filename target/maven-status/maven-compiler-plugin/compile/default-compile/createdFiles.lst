@@ -1,0 +1,7 @@
+tdi/bootcamp/sekolah/model/Kelas.class
+tdi/bootcamp/sekolah/model/WaliKelas.class
+tdi/bootcamp/sekolah/App.class
+tdi/bootcamp/sekolah/model/Murid.class
+tdi/bootcamp/jpa/util/HibernateUtil.class
+tdi/bootcamp/sekolah/model/Guru.class
+tdi/bootcamp/sekolah/model/BaseClass.class
