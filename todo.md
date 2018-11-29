@@ -30,9 +30,15 @@ create wali kelas and kelas together ----- done
 
 Batch add murid to an existing class ----- done
 
+push waliKelas to an existing one ----- done, error because waliKelas is unique
+
+update namaMurid ----- done
+
+
+
 Update namaKelas ----- done
 
-Update waliKelas ke kelas yang sudah ada ----- fixed (maybe)
+Update waliKelas ke kelas tanpa wali kelas yang sudah ada ----- fixed (maybe)
 
 ## Delete
 

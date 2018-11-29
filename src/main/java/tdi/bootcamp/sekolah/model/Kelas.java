@@ -19,7 +19,7 @@ public class Kelas extends BaseClass {
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy = "kelas")
     List<Murid> daftarMurid;
 
-    @OneToOne(cascade = CascadeType.REMOVE,cascade = CascadeType.MERGE, fetch = FetchType.EAGER, mappedBy = "kelas")
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "kelas",orphanRemoval = true)
     private WaliKelas waliKelas;
 
     public WaliKelas getWaliKelas() {

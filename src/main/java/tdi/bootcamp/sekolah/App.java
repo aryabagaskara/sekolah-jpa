@@ -61,7 +61,7 @@ public class App {
         waliKelas.setIdEntry("Tata Usaha");
         waliKelas.setGuru(guru);
         waliKelas.setTanggalEntry(new Timestamp(System.currentTimeMillis()));
-        Kelas kelas = session.find(Kelas.class,11);
+        Kelas kelas = session.find(Kelas.class,43);
         waliKelas.setKelas(kelas);
         return(Integer) session.save(waliKelas);
     }
@@ -115,21 +115,34 @@ public class App {
         return listWaliKelas;
     }*/
 
+    private static int updateMuridHql(Session session) {
+        return session.createQuery("update Murid set namaMurid = :nama, tanggalEntry = :tgl where idMurid = :id")
+                .setParameter("nama", "Joko Subianto").setParameter("tgl", new Timestamp(System.currentTimeMillis()))
+                .setParameter("id", 27).executeUpdate();
+    }
+
     private static int updateKelasHql(Session session) {
         return session.createQuery("update Kelas set namaKelas = :nama, tanggalEntry = :tgl where idKelas = :id")
                 .setParameter("nama", "Kelas 4C").setParameter("tgl", new Timestamp(System.currentTimeMillis()))
                 .setParameter("id", 6).executeUpdate();
     }
 
+    private static void updateWaliKelas(Session session) {
+        Guru guru = new Guru();
+        guru.setNamaGuru("Prabowo Widodo");
+        WaliKelas waliKelas = session.find(WaliKelas.class,64);
+        waliKelas.setGuru(guru);
+        session.update(waliKelas);
 
+    }
 
 
     private static void deleteKelas(Session session) {
-        Kelas kelas= session.find(Kelas.class, 1);
+        Kelas kelas= session.find(Kelas.class, 52);
         session.delete(kelas);
     }
     private static void deleteWaliKelas(Session session) {
-        WaliKelas waliKelas= session.find(WaliKelas.class, 23);
+        WaliKelas waliKelas= session.find(WaliKelas.class, 61);
         session.delete(waliKelas);
     }
     private static void deleteMurid(Session session) {
@@ -147,9 +160,10 @@ public class App {
         //App.updateKelasHql(session);
 
         //App.simpanKelasBatchMurid(session);
-        //App.pushWaliKeKelas(session);
-
-        App.deleteWaliKelas(session);
+        App.updateWaliKelas(session);
+        //App.deleteKelas(session);
+        //App.updateMuridHql(session);
+       // App.deleteWaliKelas(session);
         session.flush();
         /* menampilkan wali kelas dari murid
         //Kelas kelasBar = App.getKelas(session);
