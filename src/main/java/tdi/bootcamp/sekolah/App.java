@@ -92,6 +92,18 @@ public class App
     }
 
 
+    //menampilkan wali kelas dari sebuah kelas
+    /*
+    private static WaliKelas getWaliKelas(Session session){
+        WaliKelas listWaliKelas = (WaliKelas) session.createQuery("select k.wali_kelas from Kelas k where k.idKelas= :id_kelas")
+                .setParameter("id_kelas",19)
+                .getResultList().get(0);
+        return listWaliKelas;
+    }*/
+
+
+
+
 
 
     public static void main( String[] args )
@@ -105,7 +117,8 @@ public class App
 
         //App.simpanKelasBatchMurid(session);
         Kelas kelasBar = App.getKelas(session);
-        System.out.println(kelasBar.getNamaKelas());
+        WaliKelas waliBar = kelasBar.getWaliKelas();
+        System.out.println(waliBar.getGuru().getNamaGuru());
 
         session.close();
         tdi.bootcamp.jpa.util.HibernateUtil.shutdown();
