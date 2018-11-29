@@ -32,7 +32,7 @@ Batch add murid to an existing class ----- done
 
 Update namaKelas ----- done
 
-Update waliKelas ke kelas yang sudah ada ----- NG, bisa multiple wali per kelas
+Update waliKelas ke kelas yang sudah ada ----- fixed (maybe)
 
 ## Delete
 

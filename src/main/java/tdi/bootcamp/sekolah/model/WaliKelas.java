@@ -12,8 +12,8 @@ public class WaliKelas extends BaseClass{
     @Column(name = "id_wali_kelas", updatable = false, nullable = false)
     private int idWaliKelas;
 
-    @OneToOne(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_kelas")
+    @OneToOne
+    @JoinColumn(name = "id_kelas",unique = true)
     private Kelas kelas;
 
     @Embedded

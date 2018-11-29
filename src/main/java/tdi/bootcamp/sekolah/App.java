@@ -28,19 +28,19 @@ public class App {
     //membuat kelas, langsung menambahkan murid dan wali kelas
     private static Integer simpanKelasBatchMurid(Session session) {
         Guru guru = new Guru();
-        guru.setNamaGuru("Bu Diore");
+        guru.setNamaGuru("Bu Sasha");
         WaliKelas waliKelas = new WaliKelas();
         waliKelas.setGuru(guru);
         waliKelas.setIdEntry("Tata Usaha");
         waliKelas.setTanggalEntry(new Timestamp(System.currentTimeMillis()));
         Kelas kelas = new Kelas();
         kelas.setIdEntry("admin");
-        kelas.setNamaKelas("Kelas 1C");
+        kelas.setNamaKelas("Kelas 10A");
         kelas.setTanggalEntry(new Timestamp(System.currentTimeMillis()));
         List<Murid> daftarMurid = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             Murid murid = new Murid();
-            murid.setNamaMurid("Jonathan Jabrik" + i);
+            murid.setNamaMurid("Casing Stoned " + i);
             murid.setTanggalEntry(new Timestamp(System.currentTimeMillis()));
             murid.setIdEntry("Tata Usaha");
             murid.setKelas(kelas);
@@ -53,18 +53,19 @@ public class App {
     }
 
     //menyimpan wali ke kelas yang sudah ada
-    private static Integer updateWaliKeKelas(Session session){
+
+    private static Integer pushWaliKeKelas(Session session){
         Guru guru = new Guru();
         guru.setNamaGuru("Pak Maman");
         WaliKelas waliKelas = new WaliKelas();
         waliKelas.setIdEntry("Tata Usaha");
         waliKelas.setGuru(guru);
         waliKelas.setTanggalEntry(new Timestamp(System.currentTimeMillis()));
-        Kelas kelas = session.find(Kelas.class,6);
+        Kelas kelas = session.find(Kelas.class,11);
         waliKelas.setKelas(kelas);
         return(Integer) session.save(waliKelas);
-
     }
+
 
     //membuat waliKelas dan kelasnya, tidak digunakan.
     /*
@@ -128,8 +129,12 @@ public class App {
         session.delete(kelas);
     }
     private static void deleteWaliKelas(Session session) {
-        WaliKelas waliKelas= session.find(WaliKelas.class, 33);
+        WaliKelas waliKelas= session.find(WaliKelas.class, 23);
         session.delete(waliKelas);
+    }
+    private static void deleteMurid(Session session) {
+        Murid murid= session.find(Murid.class, 3);
+        session.delete(murid);
     }
 
 
@@ -142,7 +147,7 @@ public class App {
         //App.updateKelasHql(session);
 
         //App.simpanKelasBatchMurid(session);
-        //App.updateWaliKeKelas(session);
+        //App.pushWaliKeKelas(session);
 
         App.deleteWaliKelas(session);
         session.flush();
