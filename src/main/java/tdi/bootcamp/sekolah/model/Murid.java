@@ -10,6 +10,7 @@ public class Murid extends BaseClass{
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_murid", updatable = false, nullable = false)
     private int idMurid;
+
     @Column(name = "nama_murid", length = 50)
     private String namaMurid;
 

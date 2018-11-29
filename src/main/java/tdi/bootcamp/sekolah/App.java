@@ -17,7 +17,7 @@ public class App
         return (String) session.createNativeQuery(sql).getSingleResult();
     }
 
-    //membuat kelas, tidak digunakan. membuat kelas diinisiasi bersama walikelas
+    //membuat kelas, tidak digunakan.
     /*private static Integer simpanKelas(Session session){
         Kelas kelas = new Kelas();
         kelas.setNamaKelas("Kelas 1B");
@@ -53,8 +53,7 @@ public class App
         return (Integer) session.save(kelas);
     }
 
-    //membuat waliKelas dan kelasnya
-
+    //membuat waliKelas dan kelasnya, tidak digunakan.
     /*
     private static Integer simpanWaliKelas(Session session){
         Kelas kelas = new Kelas();
@@ -84,15 +83,13 @@ public class App
         return (Integer) session.save(kelas);
     }*/
 
-    //menampilkan kelas dari wali kelas
-    /*
+    //menampilkan kelas dari seorang murid
     private static Kelas getKelas(Session session) {
-       WaliKelas waliKelas = session.find(WaliKelas.class,1);
-       Kelas listData = (Kelas) session.createQuery("select k.nama_kelas from kelas k where k.id_kelas= :id_kelas")
-       .setParameter("id_kelas",waliKelas.getKelas().getIdKelas())
-               .getResultList();
+       Kelas listData = (Kelas) session.createQuery("select m.kelas from Murid m where m.idMurid= :id_murid")
+       .setParameter("id_murid",20)
+               .getResultList().get(0);
         return listData;
-    }*/
+    }
 
 
 
@@ -104,11 +101,12 @@ public class App
         Session session = tdi.bootcamp.jpa.util.HibernateUtil.getSessionFactory().openSession();
         session.getTransaction().begin();
 
-        App.simpanKelasBatchMurid(session);
-        //Kelas kelasBar = App.getKelas(session);
-        //System.out.println(kelasBar.getNamaKelas());
-
         session.flush();
+
+        //App.simpanKelasBatchMurid(session);
+        Kelas kelasBar = App.getKelas(session);
+        System.out.println(kelasBar.getNamaKelas());
+
         session.close();
         tdi.bootcamp.jpa.util.HibernateUtil.shutdown();
 
