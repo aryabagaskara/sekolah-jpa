@@ -2,7 +2,10 @@
 
 no HQL in updateWaliKelas yet
 
-read batch murid from kelas hasn't been tried
+read batch hasn't been tried
+
+figuring out cascade correctly xd
+
 
 ## Read
 
@@ -24,13 +27,12 @@ create kelas together with wali kelas and murid assigned ----- done
 
 create wali kelas and kelas together ----- done
 
-
-## Update
-
-
 Batch add murid to an existing class ----- done
 
 push waliKelas to an existing one ----- done, error because waliKelas is unique
+
+
+## Update
 
 update namaMurid ----- done in HQL
 
@@ -38,7 +40,7 @@ update namaWaliKelas ----- done, no HQL yet
 
 Update namaKelas ----- done in HQL
 
-Update waliKelas ke kelas tanpa wali kelas yang sudah ada ----- fixed (maybe)
+Update WaliKelas to a Kelas with no WaliKelas ----- fixed (maybe)
 
 ## Delete
 
@@ -46,8 +48,6 @@ Delete kelas ----- done, wali kelas and murid automatically deleted too
 
 Delete murid ----- done, kelas not deleted
 
-Delete walikelas ----- done retesting, behavior seems OK
+Delete walikelas ----- done retesting, behavior seems OK (might be not)
 
-## a
 
-table seems pretty OK now
