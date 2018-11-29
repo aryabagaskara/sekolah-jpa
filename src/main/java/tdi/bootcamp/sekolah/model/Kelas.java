@@ -16,8 +16,21 @@ public class Kelas extends BaseClass {
     @Column(name = "nama_kelas", length = 50)
     private String namaKelas;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy = "kelas")
     List<Murid> daftarMurid;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "kelas")
+    @JoinColumn(name = "id_kelas")
+    private WaliKelas waliKelas;
+
+    public WaliKelas getWaliKelas() {
+        return waliKelas;
+    }
+
+    public void setWaliKelas(WaliKelas waliKelas) {
+        this.waliKelas = waliKelas;
+    }
+
 
     public List<Murid> getDaftarMurid() {
         return daftarMurid;

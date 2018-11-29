@@ -26,8 +26,36 @@ public class App
 
     }*/
 
+    //membuat kelas, langsung menambahkan murid dan wali kelas
+    private static Integer simpanKelasBatchMurid(Session session) {
+        Guru guru = new Guru();
+        guru.setNamaGuru("Bu Diore");
+        WaliKelas waliKelas = new WaliKelas();
+        waliKelas.setGuru(guru);
+        waliKelas.setIdEntry("Tata Usaha");
+        waliKelas.setTanggalEntry(new Timestamp(System.currentTimeMillis()));
+        Kelas kelas= new Kelas();
+        kelas.setIdEntry("admin");
+        kelas.setNamaKelas("Kelas 1C");
+        kelas.setTanggalEntry(new Timestamp(System.currentTimeMillis()));
+        List<Murid> daftarMurid= new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            Murid murid= new Murid();
+            murid.setNamaMurid("Jonathan Jabrik" + i);
+            murid.setTanggalEntry(new Timestamp(System.currentTimeMillis()));
+            murid.setIdEntry("Tata Usaha");
+            murid.setKelas(kelas);
+            daftarMurid.add(murid);
+        }
+        waliKelas.setKelas(kelas);
+        kelas.setDaftarMurid(daftarMurid);
+        kelas.setWaliKelas(waliKelas);
+        return (Integer) session.save(kelas);
+    }
+
     //membuat waliKelas dan kelasnya
 
+    /*
     private static Integer simpanWaliKelas(Session session){
         Kelas kelas = new Kelas();
         kelas.setNamaKelas("Kelas 1B");
@@ -54,16 +82,17 @@ public class App
         }
         kelas.setDaftarMurid(daftarMurid);
         return (Integer) session.save(kelas);
-    }
+    }*/
 
     //menampilkan kelas dari wali kelas
+    /*
     private static Kelas getKelas(Session session) {
        WaliKelas waliKelas = session.find(WaliKelas.class,1);
        Kelas listData = (Kelas) session.createQuery("select k.nama_kelas from kelas k where k.id_kelas= :id_kelas")
        .setParameter("id_kelas",waliKelas.getKelas().getIdKelas())
                .getResultList();
         return listData;
-    }
+    }*/
 
 
 
@@ -75,9 +104,9 @@ public class App
         Session session = tdi.bootcamp.jpa.util.HibernateUtil.getSessionFactory().openSession();
         session.getTransaction().begin();
 
-        //App.assignMurid(session);
-        Kelas kelasBar = App.getKelas(session);
-        System.out.println(kelasBar.getNamaKelas());
+        App.simpanKelasBatchMurid(session);
+        //Kelas kelasBar = App.getKelas(session);
+        //System.out.println(kelasBar.getNamaKelas());
 
         session.flush();
         session.close();

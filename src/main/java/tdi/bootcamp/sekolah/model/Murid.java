@@ -33,6 +33,7 @@ public class Murid extends BaseClass{
     @JoinColumn(name = "id_kelas")
     private Kelas kelas;
 
+
     public Kelas getKelas() {
         return kelas;
     }
