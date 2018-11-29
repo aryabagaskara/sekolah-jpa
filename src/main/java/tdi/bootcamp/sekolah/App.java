@@ -56,14 +56,14 @@ public class App
         return (Integer) session.save(kelas);
     }
 
-    //menampilkan murid sesuai wali kelas (WIP)
-    /*private static Set<Murid> getMuridKelas(Session session) {
+    //menampilkan kelas dari wali kelas
+    private static Kelas getKelas(Session session) {
        WaliKelas waliKelas = session.find(WaliKelas.class,1);
-       List<Murid> listData = session.createQuery("select m.nama_murid from murid join kelas k on m.id_kelas= :id_kelas")
+       Kelas listData = (Kelas) session.createQuery("select k.nama_kelas from kelas k where k.id_kelas= :id_kelas")
        .setParameter("id_kelas",waliKelas.getKelas().getIdKelas())
                .getResultList();
-        return (Set<Murid>) listData;
-    }*/
+        return listData;
+    }
 
 
 
@@ -76,11 +76,8 @@ public class App
         session.getTransaction().begin();
 
         //App.assignMurid(session);
-        Set<Murid> muridSet = App.getMuridKelas(session);
-        for (Iterator iterator = muridSet.iterator(); iterator.hasNext();) {
-            Murid murid = (Murid) iterator.next();
-            System.out.println(String.format("nama == %s", murid.getNamaMurid()));
-        }
+        Kelas kelasBar = App.getKelas(session);
+        System.out.println(kelasBar.getNamaKelas());
 
         session.flush();
         session.close();
