@@ -101,6 +101,11 @@ public class App
         return listWaliKelas;
     }*/
 
+    private static int updateKelasHql(Session session) {
+        return session.createQuery("update Kelas set namaKelas = :nama, tanggalEntry = :tgl where idKelas = :id")
+                .setParameter("nama", "Kelas 4C").setParameter("tgl", new Timestamp(System.currentTimeMillis()))
+                .setParameter("id", 6).executeUpdate();
+    }
 
 
 
@@ -113,12 +118,17 @@ public class App
         Session session = tdi.bootcamp.jpa.util.HibernateUtil.getSessionFactory().openSession();
         session.getTransaction().begin();
 
+        App.updateKelasHql(session);
+
         session.flush();
 
         //App.simpanKelasBatchMurid(session);
-        Kelas kelasBar = App.getKelas(session);
-        WaliKelas waliBar = kelasBar.getWaliKelas();
-        System.out.println(waliBar.getGuru().getNamaGuru());
+
+        /* menampilkan wali kelas dari murid
+        //Kelas kelasBar = App.getKelas(session);
+        //WaliKelas waliBar = kelasBar.getWaliKelas();
+        //System.out.println(waliBar.getGuru().getNamaGuru());
+*/
 
         session.close();
         tdi.bootcamp.jpa.util.HibernateUtil.shutdown();
