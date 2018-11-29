@@ -52,6 +52,20 @@ public class App {
         return (Integer) session.save(kelas);
     }
 
+    //menyimpan wali ke kelas yang sudah ada
+    private static Integer updateWaliKeKelas(Session session){
+        Guru guru = new Guru();
+        guru.setNamaGuru("Pak Maman");
+        WaliKelas waliKelas = new WaliKelas();
+        waliKelas.setIdEntry("Tata Usaha");
+        waliKelas.setGuru(guru);
+        waliKelas.setTanggalEntry(new Timestamp(System.currentTimeMillis()));
+        Kelas kelas = session.find(Kelas.class,6);
+        waliKelas.setKelas(kelas);
+        return(Integer) session.save(waliKelas);
+
+    }
+
     //membuat waliKelas dan kelasnya, tidak digunakan.
     /*
     private static Integer simpanWaliKelas(Session session){
@@ -107,9 +121,15 @@ public class App {
     }
 
 
+
+
     private static void deleteKelas(Session session) {
         Kelas kelas= session.find(Kelas.class, 1);
         session.delete(kelas);
+    }
+    private static void deleteWaliKelas(Session session) {
+        WaliKelas waliKelas= session.find(WaliKelas.class, 33);
+        session.delete(waliKelas);
     }
 
 
@@ -122,8 +142,9 @@ public class App {
         //App.updateKelasHql(session);
 
         //App.simpanKelasBatchMurid(session);
-        App.deleteKelas(session);
+        //App.updateWaliKeKelas(session);
 
+        App.deleteWaliKelas(session);
         session.flush();
         /* menampilkan wali kelas dari murid
         //Kelas kelasBar = App.getKelas(session);
@@ -133,6 +154,7 @@ public class App {
 
         session.close();
         tdi.bootcamp.jpa.util.HibernateUtil.shutdown();
+
 
     }
 }

@@ -32,6 +32,16 @@ Batch add murid to an existing class ----- done
 
 Update namaKelas ----- done
 
+Update waliKelas ke kelas yang sudah ada
+
 ## Delete
 
 Delete kelas ----- done, wali kelas and murid automatically deleted too
+
+Delete murid ----- done, kelas not deleted
+
+Delete walikelas ----- done retesting, behavior seems OK
+
+## a
+
+table seems pretty OK now

@@ -12,7 +12,7 @@ public class WaliKelas extends BaseClass{
     @Column(name = "id_wali_kelas", updatable = false, nullable = false)
     private int idWaliKelas;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     @JoinColumn(name = "id_kelas")
     private Kelas kelas;
 
