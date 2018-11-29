@@ -10,8 +10,7 @@ import tdi.bootcamp.sekolah.model.WaliKelas;
 import java.sql.Timestamp;
 import java.util.*;
 
-public class App
-{
+public class App {
 
     private static String getNativeQuery(Session session, String sql) {
         return (String) session.createNativeQuery(sql).getSingleResult();
@@ -34,13 +33,13 @@ public class App
         waliKelas.setGuru(guru);
         waliKelas.setIdEntry("Tata Usaha");
         waliKelas.setTanggalEntry(new Timestamp(System.currentTimeMillis()));
-        Kelas kelas= new Kelas();
+        Kelas kelas = new Kelas();
         kelas.setIdEntry("admin");
         kelas.setNamaKelas("Kelas 1C");
         kelas.setTanggalEntry(new Timestamp(System.currentTimeMillis()));
-        List<Murid> daftarMurid= new ArrayList<>();
+        List<Murid> daftarMurid = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
-            Murid murid= new Murid();
+            Murid murid = new Murid();
             murid.setNamaMurid("Jonathan Jabrik" + i);
             murid.setTanggalEntry(new Timestamp(System.currentTimeMillis()));
             murid.setIdEntry("Tata Usaha");
@@ -85,9 +84,9 @@ public class App
 
     //menampilkan kelas dari seorang murid
     private static Kelas getKelas(Session session) {
-       Kelas listData = (Kelas) session.createQuery("select m.kelas from Murid m where m.idMurid= :id_murid")
-       .setParameter("id_murid",20)
-               .getResultList().get(0);
+        Kelas listData = (Kelas) session.createQuery("select m.kelas from Murid m where m.idMurid= :id_murid")
+                .setParameter("id_murid", 20)
+                .getResultList().get(0);
         return listData;
     }
 
@@ -108,22 +107,24 @@ public class App
     }
 
 
+    private static void deleteKelas(Session session) {
+        Kelas kelas= session.find(Kelas.class, 1);
+        session.delete(kelas);
+    }
 
 
-
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
 
         Session session = tdi.bootcamp.jpa.util.HibernateUtil.getSessionFactory().openSession();
         session.getTransaction().begin();
 
-        App.updateKelasHql(session);
-
-        session.flush();
+        //App.updateKelasHql(session);
 
         //App.simpanKelasBatchMurid(session);
+        App.deleteKelas(session);
 
+        session.flush();
         /* menampilkan wali kelas dari murid
         //Kelas kelasBar = App.getKelas(session);
         //WaliKelas waliBar = kelasBar.getWaliKelas();

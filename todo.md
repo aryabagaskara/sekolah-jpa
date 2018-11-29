@@ -1,6 +1,6 @@
 ## TODO
 
-CRUD test, update and delete hasn't been tested yet
+test, update and delete hasn't been tested yet
 
 Read done, read batch murid from kelas hasn't been tested yet
 
@@ -29,3 +29,9 @@ create wali kelas and kelas together ----- done
 
 
 Batch add murid to an existing class ----- done
+
+Update namaKelas ----- done
+
+## Delete
+
+Delete kelas ----- done, wali kelas and murid automatically deleted too
