@@ -1,8 +1,8 @@
 ## TODO
 
-test, update and delete hasn't been tested yet
+no HQL in updateWaliKelas yet
 
-Read done, read batch murid from kelas hasn't been tested yet
+read batch murid from kelas hasn't been tried
 
 ## Read
 

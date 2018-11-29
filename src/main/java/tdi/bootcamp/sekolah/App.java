@@ -132,6 +132,7 @@ public class App {
         guru.setNamaGuru("Prabowo Widodo");
         WaliKelas waliKelas = session.find(WaliKelas.class,64);
         waliKelas.setGuru(guru);
+        waliKelas.setTanggalEntry(new Timestamp(System.currentTimeMillis()));
         session.update(waliKelas);
 
     }
@@ -160,7 +161,7 @@ public class App {
         //App.updateKelasHql(session);
 
         //App.simpanKelasBatchMurid(session);
-        App.updateWaliKelas(session);
+        //App.updateWaliKelas(session);
         //App.deleteKelas(session);
         //App.updateMuridHql(session);
        // App.deleteWaliKelas(session);
