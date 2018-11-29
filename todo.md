@@ -32,11 +32,11 @@ Batch add murid to an existing class ----- done
 
 push waliKelas to an existing one ----- done, error because waliKelas is unique
 
-update namaMurid ----- done
+update namaMurid ----- done in HQL
 
+update namaWaliKelas ----- done, no HQL yet
 
-
-Update namaKelas ----- done
+Update namaKelas ----- done in HQL
 
 Update waliKelas ke kelas tanpa wali kelas yang sudah ada ----- fixed (maybe)
 
